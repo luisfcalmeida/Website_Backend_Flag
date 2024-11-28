@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carros</title>
-</head>
-<body>
+<x-layout>
+
     <h1>Carros<h1>
 
     @foreach ($cars as $car)
@@ -17,5 +11,5 @@
 
     <a href="{{ route('create') }}">Adicionar novo carro</a>
 
-</body>
-</html>
+    {{ $cars -> links('vendor/pagination/simple-default') }}
+</x-layout>

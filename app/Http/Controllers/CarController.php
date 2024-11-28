@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Http\Requests\SaveCarRequest;
 
 class CarController extends Controller
 {
     public function index()
     {
         return view('cars.index', [
-            'cars' => Car::all()
+            'cars' => Car::orderBy('created_at')->paginate(5)
         ]);
     }
 
@@ -21,40 +22,36 @@ class CarController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(SaveCarRequest $request)
     {
-        $request->validate([
-            'marca' => 'required|string|max:50',
-            'modelo' => 'required|string|max:50', 
-            'matricula' => 'required|string|size:6|unique:car,matricula', 
-            'ano' => 'required|integer|digits:4|min:1900|max:' . date('Y'), 
-            'versao' => 'string|max:50',
-            'submodelo' => 'string|max:50',
-            'portas' => 'required|integer|min:1|max:6',
-            'cor' => 'required|string|max:30',
-            'traccao' => 'required|in:Integral,Tracção dianteira,Tracção traseira',
-            'cilindrada' => 'required|integer',
-            'potencia' => 'required|integer', 
-            'caixa' => 'required|in:Automática,Manual',  
-            'combustivel' => 'required|in:Diesel,Elétrico,Gasolina,GPL,GNC,Híbrido (Diesel),Híbrido (Gasolina),Híbrido Plug-In,Hidrogénio', 
-            'segmento' => 'required|in:Cabrio,Carrinha,Citadino,Coupé,Monovolume,Pequeno citadino', 
-            'tipoCor' => 'required|in:Mate,Metalizado,Pérola',
-            'classeVeiculo' => 'required|in:Classe 1,Classe 2,Classe 3,Classe 4',
-        ]);
-
-        Car::create($request->input());
-        redirect()->route('index');
+        $car = Car::create($request->validated());
+        return redirect()->route('details', $car)
+            ->with('status', 'Veículo adicionado com sucesso.');
     }
 
 
-    public function details(string $id)
+    public function details(Car $car)
     {
-        $car = Car::find($id);
-
-        if ($car === null) {
-            abort(404);
-        }
-
         return view('cars.details', compact('car'));
+    }
+
+    public function edit(Car $car)
+    {
+        return view('cars.edit', compact('car'));
+    }
+
+    public function update(SaveCarRequest $request, Car $car)
+    {
+        $car -> update($request->validated());
+        return redirect()->route('details', $car)
+            ->with('status', 'Veículo atualizado com sucesso.');
+    }
+
+    public function destroy(Car $car)
+    {
+        $car -> delete();
+
+        return redirect()->route('index')
+            ->with('status', 'Veículo eliminado com sucesso.');
     }
 }

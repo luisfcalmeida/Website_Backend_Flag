@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes</title>
-</head>
-<body>
+<x-layout>
 
     <h1> {{ $car->matricula }} </h1>
     <p> {{ $car->marca }} </p>
     <p> {{ $car->modelo }} </p>
     
-</body>
-</html>
+    <a href="{{ route('edit', $car->id) }}">Editar</a>
+
+    <form method="post" action="{{ route('destroy', $car) }}">
+        @csrf 
+        @method('DELETE')
+
+        <button>Eliminar</button>
+    </form>
+</x-layout>
