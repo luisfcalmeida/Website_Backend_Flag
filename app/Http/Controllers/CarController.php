@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Http\Requests\SaveCarRequest;
+use App\Http\Requests\UpdateCarRequest;
 
 class CarController extends Controller
 {
@@ -40,7 +41,7 @@ class CarController extends Controller
         return view('cars.edit', compact('car'));
     }
 
-    public function update(SaveCarRequest $request, Car $car)
+    public function update(UpdateCarRequest $request, Car $car)
     {
         $car -> update($request->validated());
         return redirect()->route('details', $car)
