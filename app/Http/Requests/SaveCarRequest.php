@@ -27,7 +27,7 @@ class SaveCarRequest extends FormRequest
             'matricula' => 'required|string|size:6|unique:car,matricula', 
             'ano' => 'required|integer|digits:4|min:1900|max:' . date('Y'), 
             'versao' => 'string|max:50',
-            'submodelo' => 'string|max:50',
+            'submodelo' => 'required|string|max:50',
             'portas' => 'required|integer|min:1|max:6',
             'cor' => 'required|string|max:30',
             'traccao' => 'required|in:Integral,Tracção dianteira,Tracção traseira',

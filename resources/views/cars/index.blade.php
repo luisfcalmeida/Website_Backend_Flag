@@ -1,15 +1,28 @@
 <x-layout>
 
-    <h1>Carros<h1>
+    <h1>Frota<h1>
 
-    @foreach ($cars as $car)
-        <h2> {{ $car->matricula }}</h2>
-        <p> {{ $car->marca }}</p>
-        <p> {{ $car->modelo }}</p>
-        <a href=" {{ route('details', $car->id) }}">Mostrar</a>
-    @endforeach
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Matrícula</th>
+            <th>Detalhes</th>
+        </tr>
+        
+        @foreach ($cars as $car)
+        <tr>
+            <td> {{ $car->id }} </td>
+            <td> {{ $car->marca }} </td>
+            <td> {{ $car->modelo }} </td>
+            <td> {{ $car->matricula }} </td>
+            <td> <a href=" {{ route('details', $car->id) }}">Mostrar</a> </td>
+        </tr>
+        @endforeach
+    </table>
 
-    <a href="{{ route('create') }}">Adicionar novo carro</a>
+    <button onclick="window.location='{{ route('create') }}'">Adicionar novo veículo</button>
 
     {{ $cars -> links('vendor/pagination/simple-default') }}
 </x-layout>

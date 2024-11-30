@@ -1,5 +1,4 @@
 <x-layout>
-
     <h1>Criar</h1>
 
     <x-errors/>
