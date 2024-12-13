@@ -27,3 +27,6 @@ Route::patch('{car}', [CarController::class, 'update'])
 
 Route::delete('/{car}', [CarController::class, 'destroy'])
     ->name('destroy');
+
+Route::get('/{car}/historico', [CarController::class, 'historico'])
+    ->name('historico');

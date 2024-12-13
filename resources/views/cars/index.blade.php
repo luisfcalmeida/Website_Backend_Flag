@@ -1,6 +1,6 @@
 <x-layout>
 
-    <h1>Frota<h1>
+    <h1>Lista de Veículos</h1>
 
     <table>
         <tr>

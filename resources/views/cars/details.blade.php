@@ -46,8 +46,11 @@
         </tr>
     </table>
 
-    <button onclick="window.location='{{ route('edit', $car->id) }}'">Editar</button>
+    <h2>Histórico do Veículo</h2>
+    <button onclick="window.location='{{ route('historico', $car->id) }}'">Ver Histórico</button>
 
+    <button onclick="window.location='{{ route('edit', $car->id) }}'">Editar</button>
+ 
     <form method="post" action="{{ route('destroy', $car) }}">
         @csrf 
         @method('DELETE')
