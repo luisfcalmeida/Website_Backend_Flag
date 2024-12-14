@@ -24,5 +24,5 @@
 
     <button onclick="window.location='{{ route('create') }}'">Adicionar novo veículo</button>
 
-    {{ $cars -> links('vendor/pagination/simple-default') }}
+    {{ $cars -> links('vendor/pagination/semantic-ui') }}
 </x-layout>

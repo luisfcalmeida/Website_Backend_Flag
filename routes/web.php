@@ -6,9 +6,6 @@ use App\Http\Controllers\CarController;
 Route::get('/', [CarController::class, 'index'])
     ->name('index');
 
-Route::get('/details', [CarController::class, 'details'])
-    ->name('details');
-
 Route::get('/create', [CarController::class, 'create'])
     ->name('create');
 
@@ -17,12 +14,12 @@ Route::post('/store', [CarController::class, 'store'])
 
 Route::get('/{car}', [CarController::class, 'details'])
     ->name('details')
-    ->whereNumber('id');
+    ->whereNumber('car');
 
 Route::get('/{car}/edit', [CarController::class, 'edit'])
     ->name('edit');
 
-Route::patch('{car}', [CarController::class, 'update'])
+Route::patch('/{car}', [CarController::class, 'update'])
     ->name('update');
 
 Route::delete('/{car}', [CarController::class, 'destroy'])
@@ -30,3 +27,6 @@ Route::delete('/{car}', [CarController::class, 'destroy'])
 
 Route::get('/{car}/historico', [CarController::class, 'historico'])
     ->name('historico');
+
+Route::post('/{car}/historico', [CarController::class, 'storeHistorico'])
+    ->name('storeHistorico');

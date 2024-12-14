@@ -1,27 +1,14 @@
 <x-layout>
 
-    <h1>Matrícula: {{ $car->matricula }}</h1>
+    <h1>Histórico do Veículo: {{ $car->matricula }}</h1>
 
+    <h2>Histórico de utilização</h2>
     <div id="historico">
-        <h2>Histórico de utilização</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Funcionário</th>
-                    <th>Função</th>
-                    <th>Data de Início</th>
-                    <th>Data de Fim</th>
-                    <th>KM Início</th>
-                    <th>KM Fim</th>
-                    <th>Descrição da Rota</th>
-                </tr>
-            </thead>
-            <tbody id="historicoBody"></tbody>
-        </table>
+        <ul id="historicoBody" class="info-list"></ul>
     </div>
 
     <h2>Criar novo histórico</h2>
-    <form method="POST" action="http://localhost:3000/api/historicos">
+    <form method="POST" action="{{ route('storeHistorico', ['car' => $car->id]) }}">
         @csrf
 
         <input type="hidden" name="matriculaVeiculo" value="{{ $car->matricula }}">
@@ -51,7 +38,7 @@
         <button type="submit">Adicionar Histórico</button>
     </form>
 
-    <button onclick="window.location='{{ route('index') }}'">Voltar</button>
+    <button onclick="window.location='{{ route('details', ['car' => $car->id]) }}'">Voltar</button>
 
     <script>
         const matricula = @json($car->matricula);
@@ -68,25 +55,24 @@
         }
 
         function mostrarHistorico(data) {
-            const tbody = document.getElementById("historicoBody");
+            const list = document.getElementById("historicoBody");
 
             data.forEach(item => {
-                const row = `
-                    <tr>
-                        <td>${item.idFuncionario?.nome}</td>
-                        <td>${item.idFuncionario?.funcao}</td>
-                        <td>${new Date(item.dataInicio).toLocaleString()}</td>
-                        <td>${new Date(item.dataFim).toLocaleString()}</td>
-                        <td>${item.kmInicio}</td>
-                        <td>${item.kmFim}</td>
-                        <td>${item.descricaoRota}</td>
-                    </tr>
+                const listItem = `
+                    <div class="listaHistorico">
+                        <li><strong>Funcionário:</strong> ${item.idFuncionario?.nome}</li>
+                        <li><strong>Função:</strong> ${item.idFuncionario?.funcao}</li>
+                        <li><strong>Data de Início:</strong> ${new Date(item.dataInicio).toLocaleString()}</li>
+                        <li><strong>Data de Fim:</strong> ${new Date(item.dataFim).toLocaleString()}</li>
+                        <li><strong>KM Início:</strong> ${item.kmInicio}</li>
+                        <li><strong>KM Fim:</strong> ${item.kmFim}</li>
+                        <li><strong>Descrição da Rota:</strong> ${item.descricaoRota}</li>
+                    </div>
                 `;
-                tbody.innerHTML += row;
+                list.innerHTML += listItem;
             });
         }
 
         getHistorico();
     </script>
-
 </x-layout>

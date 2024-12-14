@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Http\Requests\SaveCarRequest;
 use App\Http\Requests\UpdateCarRequest;
-
-
 use Illuminate\Support\Facades\Http;
 
 class CarController extends Controller
@@ -15,24 +13,22 @@ class CarController extends Controller
     public function index()
     {
         return view('cars.index', [
-            'cars' => Car::orderBy('created_at')->paginate(5)
+            'cars' => Car::orderBy('created_at')->paginate(10),
         ]);
     }
 
-    
     public function create()
     {
         return view('cars.create');
     }
 
-
     public function store(SaveCarRequest $request)
     {
         $car = Car::create($request->validated());
-        return redirect()->route('details', $car)
+
+        return redirect()->route('details', ['car' => $car->id])
             ->with('status', 'Veículo adicionado com sucesso.');
     }
-
 
     public function details(Car $car)
     {
@@ -46,15 +42,14 @@ class CarController extends Controller
 
     public function update(UpdateCarRequest $request, Car $car)
     {
-        $car -> update($request->validated());
-        return redirect()->route('details', $car)
+        $car->update($request->validated());
+        return redirect()->route('details', ['car' => $car->id])
             ->with('status', 'Veículo atualizado com sucesso.');
     }
 
     public function destroy(Car $car)
     {
-        $car -> delete();
-
+        $car->delete();
         return redirect()->route('index')
             ->with('status', 'Veículo eliminado com sucesso.');
     }
@@ -65,10 +60,10 @@ class CarController extends Controller
 
         $response = Http::get('http://localhost:3000/api/funcionarios');
         $funcionarios = $response->json();
-    
+
         return view('cars.historico', compact('car', 'funcionarios'));
     }
-    
+
     public function storeHistorico(Request $request, $id)
     {
         $request->validate([
@@ -82,7 +77,7 @@ class CarController extends Controller
 
         $car = Car::findOrFail($id);
 
-        Historico::create([
+        Http::post('http://localhost:3000/api/historicos', [
             'matriculaVeiculo' => $car->matricula,
             'idFuncionario' => $request->input('idFuncionario'),
             'dataInicio' => $request->input('dataInicio'),
@@ -92,6 +87,8 @@ class CarController extends Controller
             'descricaoRota' => $request->input('descricaoRota'),
         ]);
 
-        return redirect()->route('details', $car->id)->with('status', 'Histórico adicionado com sucesso!');
+        return redirect()->route('historico', ['car' => $car->id])
+        ->with('status', 'Histórico adicionado com sucesso.');
+    
     }
 }
