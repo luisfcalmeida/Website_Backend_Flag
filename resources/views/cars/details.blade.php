@@ -26,10 +26,11 @@
 
     <h2>Opções do Veículo</h2>
     <div class="button-group">
-        <button class="custom-button" onclick="window.location='{{ route('historico', $car->id) }}'">Ver histórico</button>
+        <button class="custom-button" onclick="window.location='{{ route('historico', $car->id) }}'">Ver
+            histórico</button>
         <button class="custom-button" onclick="window.location='{{ route('edit', $car->id) }}'">Editar veículo</button>
         <form method="post" action="{{ route('destroy', $car) }}" style="display: inline;">
-            @csrf 
+            @csrf
             @method('DELETE')
             <button class="custom-button">Eliminar veículo</button>
         </form>

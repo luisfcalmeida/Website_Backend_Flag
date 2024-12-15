@@ -1,10 +1,10 @@
 <x-layout>
     <h1>Adicionar novo veículo</h1>
 
-    <x-errors/>
+    <x-errors />
 
     <form method="post" action=" {{route('store') }}">
-        <x-form/>
+        <x-form />
     </form>
 
     <button class="custom-button" onclick="window.location='{{ route('index') }}'">Voltar</button>
