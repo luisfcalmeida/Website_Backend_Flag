@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\HistoricoController;
 
 Route::get('/', [CarController::class, 'index'])
     ->name('index');
@@ -25,8 +26,8 @@ Route::patch('/{car}', [CarController::class, 'update'])
 Route::delete('/{car}', [CarController::class, 'destroy'])
     ->name('destroy');
 
-Route::get('/{car}/historico', [CarController::class, 'historico'])
+Route::get('/{car}/historico', [HistoricoController::class, 'historico'])
     ->name('historico');
 
-Route::post('/{car}/historico', [CarController::class, 'storeHistorico'])
+Route::post('/{car}/historico', [HistoricoController::class, 'storeHistorico'])
     ->name('storeHistorico');

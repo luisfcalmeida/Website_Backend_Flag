@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frota Automóvel</title>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
     h1 {
         font-size: 40px;
@@ -60,6 +61,11 @@
 </head>
 
 <body>
+    
+    <a href="{{ route('index') }}">
+        <i class="fa fa-home" aria-hidden="true">Home</i>
+    </a>
+
     @if (session('status'))
     <div> {{ session('status') }} </div>
     @endif

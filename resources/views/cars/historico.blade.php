@@ -52,7 +52,7 @@
     <button onclick="window.location='{{ route('details', ['car' => $car->id]) }}'">Voltar</button>
 
     <script>
-    const matricula = @json($car - > matricula);
+    const matricula = @json($car -> matricula);
     const url = `http://localhost:3000/api/historicos/matricula/${matricula}`;
 
     document.addEventListener("DOMContentLoaded", () => {
