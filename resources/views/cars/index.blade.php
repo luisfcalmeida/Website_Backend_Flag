@@ -64,6 +64,8 @@
                 const resultadosDiv = document.getElementById("historicos-resultados");
                 resultadosDiv.classList.remove("hidden");
 
+                const carId = "{{ $car->id }}";
+
                 if (data.length === 0) {
                     listaResultados.innerHTML = "<li>Nenhum histórico encontrado no período especificado.</li>";
                 } else {
@@ -71,19 +73,33 @@
                         const listItem = `
                             <div class="listaHistorico">
                                 <ul class="info-list">
-                                    <li><strong>Funcionário:</strong> ${item.idFuncionario?.nome}</li>
-                                    <li><strong>Função:</strong> ${item.idFuncionario?.funcao}</li>
+                                    <li><strong>Funcionário:</strong> ${item.idFuncionario?.nome || "N/A"}</li>
+                                    <li><strong>Função:</strong> ${item.idFuncionario?.funcao || "N/A"}</li>
                                     <li><strong>Data de Início:</strong> ${new Date(item.dataInicio).toLocaleString()}</li>
                                     <li><strong>Data de Fim:</strong> ${new Date(item.dataFim).toLocaleString()}</li>
                                     <li><strong>KM Início:</strong> ${item.kmInicio}</li>
                                     <li><strong>KM Fim:</strong> ${item.kmFim}</li>
                                     <li><strong>Descrição da Rota:</strong> ${item.descricaoRota}</li>
+                                    <li>
+                                        <button onclick="window.location.href='/${carId}/historico/${item._id}/edit'">Editar Histórico</button>
+
+                                        <form method="POST" action="/${carId}/historico/${item._id}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Pretende mesmo eliminar este histórico?');">Eliminar Histórico</button>
+                                        </form>
+                                    </li>
                                 </ul>
+
+
                             </div>
                         `;
                         listaResultados.innerHTML += listItem;
                     });
                 }
             })
+            .catch(error => {
+                console.error("Erro ao buscar os históricos:", error);
+            });
     });
 </script>

@@ -7,6 +7,5 @@
         <x-form :car="$car" />
     </form>
 
-    <button class="custom-button"
-        onclick="window.location='{{ route('details', ['car' => $car->id]) }}'">Voltar</button>
+    <button onclick="window.location='{{ route('details', ['car' => $car->id]) }}'">Voltar</button>
 </x-layout>

@@ -31,3 +31,12 @@ Route::get('/{car}/historico', [HistoricoController::class, 'historico'])
 
 Route::post('/{car}/historico', [HistoricoController::class, 'storeHistorico'])
     ->name('storeHistorico');
+
+Route::get('{car}/historico/{historicoId}/edit', [HistoricoController::class, 'editHistorico'])
+    ->name('editHistorico');
+
+Route::patch('{car}/historico/{historicoId}', [HistoricoController::class, 'updateHistorico'])
+    ->name('updateHistorico');
+
+Route::delete('{car}/historico/{historicoId}', [HistoricoController::class, 'destroyHistorico'])
+    ->name('destroyHistorico');

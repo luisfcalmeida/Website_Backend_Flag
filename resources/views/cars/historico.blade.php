@@ -88,6 +88,8 @@
             return;
         }
 
+        const carId = "{{ $car->id }}";
+
         data.forEach(item => {
             const listItem = `
                     <div class="listaHistorico">
@@ -99,6 +101,15 @@
                             <li><strong>KM Início:</strong> ${item.kmInicio}</li>
                             <li><strong>KM Fim:</strong> ${item.kmFim}</li>
                             <li><strong>Descrição da Rota:</strong> ${item.descricaoRota}</li>
+                            <li>
+                                <button onclick="window.location.href='/${carId}/historico/${item._id}/edit'">Editar Histórico</button>
+
+                                <form method="POST" action="/${carId}/historico/${item._id}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Pretende mesmo eliminar este histórico?');">Eliminar Histórico</button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 `;

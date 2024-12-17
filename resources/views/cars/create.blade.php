@@ -7,5 +7,5 @@
         <x-form />
     </form>
 
-    <button class="custom-button" onclick="window.location='{{ route('index') }}'">Voltar</button>
+    <button onclick="window.location='{{ route('index') }}'">Voltar</button>
 </x-layout>
