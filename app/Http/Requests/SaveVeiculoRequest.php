@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveCarRequest extends FormRequest
+class SaveVeiculoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class SaveCarRequest extends FormRequest
         return [
             'marca' => 'required|string|max:50',
             'modelo' => 'required|string|max:50', 
-            'matricula' => 'required|string|size:6|unique:car,matricula', 
+            'matricula' => 'required|string|size:6|unique:veiculo,matricula', 
             'ano' => 'required|integer|digits:4|min:1900|max:' . date('Y'), 
             'versao' => 'string|max:50',
             'submodelo' => 'required|string|max:50',

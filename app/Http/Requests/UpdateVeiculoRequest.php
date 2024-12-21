@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateCarRequest extends FormRequest
+class UpdateVeiculoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,7 @@ class UpdateCarRequest extends FormRequest
                 'required',
                 'string',
                 'size:6',
-                Rule::unique('car', 'matricula')->ignore($this->car),
+                Rule::unique('veiculo', 'matricula')->ignore($this->veiculo),
             ],
             'ano' => 'required|integer|digits:4|min:1900|max:' . date('Y'), 
             'versao' => 'string|max:50',
