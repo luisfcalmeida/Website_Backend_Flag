@@ -8,7 +8,7 @@
     <form method="post" action=" {{ route('veiculo.atualizar', $veiculo) }} ">
         @method('PATCH')
 
-        <x-form : veiculo="$veiculo" />
+        <x-form :veiculo="$veiculo" />
     </form>
 
     <!-- Voltar à página anterior (detalhes do veículo) -->

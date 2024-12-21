@@ -70,36 +70,46 @@
 <div>
     <label for="combustivel">Combustível:</label>
     <select name="combustivel" id="combustivel">
-        <option value="Diesel" {{ old('combustivel', $veiculo->combustivel ?? '') == 'Diesel' ? 'selected' : '' }}>Diesel</option>
-        <option value="Elétrico" {{ old('combustivel', $veiculo->combustivel ?? '') == 'Elétrico' ? 'selected' : '' }}>Elétrico</option>
-        <option value="Gasolina" {{ old('combustivel', $veiculo->combustivel ?? '') == 'Gasolina' ? 'selected' : '' }}>Gasolina</option>
-        <option value="GPL" {{ old('combustivel', $veiculo->combustivel ?? '') == 'GPL' ? 'selected' : '' }}>GPL</option>
-        <option value="GNC" {{ old('combustivel', $veiculo->combustivel ?? '') == 'GNC' ? 'selected' : '' }}>GNC</option>
+        <option value="Diesel" {{ old('combustivel', $car->combustivel ?? '') == 'Diesel' ? 'selected' : '' }}>Diesel</option>
+        <option value="Elétrico" {{ old('combustivel', $car->combustivel ?? '') == 'Elétrico' ? 'selected' : '' }}>Elétrico</option>
+        <option value="Gasolina" {{ old('combustivel', $car->combustivel ?? '') == 'Gasolina' ? 'selected' : '' }}>Gasolina</option>
+        <option value="GPL" {{ old('combustivel', $car->combustivel ?? '') == 'GPL' ? 'selected' : '' }}>GPL</option>
+        <option value="GNC" {{ old('combustivel', $car->combustivel ?? '') == 'GNC' ? 'selected' : '' }}>GNC</option>
+        <option value="Híbrido (Diesel)" {{ old('combustivel', $car->combustivel ?? '') == 'Híbrido (Diesel)' ? 'selected' : '' }}>Híbrido (Diesel)</option>
+        <option value="Híbrido (Gasolina)" {{ old('combustivel', $car->combustivel ?? '') == 'Híbrido (Gasolina)' ? 'selected' : '' }}>Híbrido (Gasolina)</option>
+        <option value="Híbrido Plug-In" {{ old('combustivel', $car->combustivel ?? '') == 'Híbrido Plug-In' ? 'selected' : '' }}>Híbrido Plug-In</option>
+        <option value="Hidrogénio" {{ old('combustivel', $car->combustivel ?? '') == 'Hidrogénio' ? 'selected' : '' }}>Hidrogénio</option>
     </select>
 </div>
 
 <div>
     <label for="segmento">Segmento:</label>
     <select name="segmento" id="segmento">
-        <option value="Cabrio" {{ old('segmento', $veiculo->segmento ?? '') == 'Cabrio' ? 'selected' : '' }}>Cabrio</option>
-        <option value="Carrinha" {{ old('segmento', $veiculo->segmento ?? '') == 'Carrinha' ? 'selected' : '' }}>Carrinha</option>
-        <option value="Citadino" {{ old('segmento', $veiculo->segmento ?? '') == 'Citadino' ? 'selected' : '' }}>Citadino</option>
+        <option value="Cabrio" {{ old('segmento', $car->segmento ?? '') == 'Cabrio' ? 'selected' : '' }}>Cabrio</option>
+        <option value="Carrinha" {{ old('segmento', $car->segmento ?? '') == 'Carrinha' ? 'selected' : '' }}>Carrinha</option>
+        <option value="Citadino" {{ old('segmento', $car->segmento ?? '') == 'Citadino' ? 'selected' : '' }}>Citadino</option>
+        <option value="Coupé" {{ old('segmento', $car->segmento ?? '') == 'Coupé' ? 'selected' : '' }}>Coupé</option>
+        <option value="Monovolume" {{ old('segmento', $car->segmento ?? '') == 'Monovolume' ? 'selected' : '' }}>Monovolume</option>
+        <option value="Pequeno citadino" {{ old('segmento', $car->segmento ?? '') == 'Pequeno citadino' ? 'selected' : '' }}>Pequeno citadino</option>
     </select>
 </div>
 
 <div>
     <label for="tipoCor">Tipo de cor:</label>
     <select name="tipoCor" id="tipoCor">
-        <option value="Mate" {{ old('tipoCor', $veiculo->tipoCor ?? '') == 'Mate' ? 'selected' : '' }}>Mate</option>
-        <option value="Metalizado" {{ old('tipoCor', $veiculo->tipoCor ?? '') == 'Metalizado' ? 'selected' : '' }}>Metalizado</option>
+        <option value="Mate" {{ old('tipoCor', $car->tipoCor ?? '') == 'Mate' ? 'selected' : '' }}>Mate</option>
+        <option value="Metalizado" {{ old('tipoCor', $car->tipoCor ?? '') == 'Metalizado' ? 'selected' : '' }}>Metalizado</option>
+        <option value="Pérola" {{ old('tipoCor', $car->tipoCor ?? '') == 'Pérola' ? 'selected' : '' }}>Pérola</option>
     </select>
 </div>
 
 <div>
     <label for="classeVeiculo">Classe:</label>
     <select name="classeVeiculo" id="classeVeiculo">
-        <option value="Classe 1" {{ old('classeVeiculo', $veiculo->classeVeiculo ?? '') == 'Classe 1' ? 'selected' : '' }}>Classe 1</option>
-        <option value="Classe 2" {{ old('classeVeiculo', $veiculo->classeVeiculo ?? '') == 'Classe 2' ? 'selected' : '' }}>Classe 2</option>
+        <option value="Classe 1" {{ old('classeVeiculo', $car->classeVeiculo ?? '') == 'Classe 1' ? 'selected' : '' }}>Classe 1</option>
+        <option value="Classe 2" {{ old('classeVeiculo', $car->classeVeiculo ?? '') == 'Classe 2' ? 'selected' : '' }}>Classe 2</option>
+        <option value="Classe 3" {{ old('classeVeiculo', $car->classeVeiculo ?? '') == 'Classe 3' ? 'selected' : '' }}>Classe 3</option>
+        <option value="Classe 4" {{ old('classeVeiculo', $car->classeVeiculo ?? '') == 'classe4' ? 'selected' : '' }}>Classe 4</option>
     </select>
 </div>
 

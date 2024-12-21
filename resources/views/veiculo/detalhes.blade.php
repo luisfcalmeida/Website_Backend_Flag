@@ -5,6 +5,7 @@
     <h2>Informações Básicas</h2>
     <ul class="info-list">
         <li><strong>Ano:</strong> {{ $veiculo->ano }}</li>
+        <li><strong>Marca:</strong> {{ $veiculo->marca }}</li>
         <li><strong>Modelo:</strong> {{ $veiculo->modelo }}</li>
         <li><strong>Versão:</strong> {{ $veiculo->versao }}</li>
         <li><strong>Sub-modelo:</strong> {{ $veiculo->submodelo }}</li>
@@ -41,6 +42,6 @@
         </form>
 
         <!-- Voltar à página anterior (listagem de todos os veículos) -->
-        <button onclick="window.location='{{ route('veiculo.mostrar') }}'">Voltar à página anterior</button>
+        <button onclick="window.location='{{ route('veiculo.mostrar') }}'">Voltar à pagina anterior</button>
     </div>
 </x-layout>

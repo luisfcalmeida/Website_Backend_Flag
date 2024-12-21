@@ -10,6 +10,9 @@
 
         <!-- Ficheiro CSS para sobrepor ou adicionar estilização específica ao projeto -->
         <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Importa a biblioteca Font Awesome para utilização de ícones -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     </head>
 
     <body>
@@ -22,6 +25,8 @@
         {{ $slot }}
 
         <!-- Voltar à página principal (index) -->
-        <button onclick="window.location='{{ route('index') }}'">Voltar à página principal</button>
+        @if (Route::currentRouteName() !== 'index')
+            <button onclick="window.location='{{ route('index') }}'">Voltar à página principal</button>
+        @endif
     </body>
 </html>
